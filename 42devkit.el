@@ -60,19 +60,19 @@
    binary file on workstations."
   (interactive)
   (let* ((binary "/usr/bin/norminette")
-		 (inhibit-read-only nil)
+         (inhibit-read-only nil)
 		 (dir (file-name-directory buffer-file-name))
 		 (greper "| grep -B1 \"^Error\""))
 	(with-output-to-temp-buffer "*Norminette*"
 	  (when (eq norminette-always-prompt t)
 		(setq dir (read-file-name "Directory to scan: ")))
 	  (shell-command (format "%s %s %s %s" binary
-							 norminette-default-args dir
+                             norminette-default-args dir
 							 greper) "*Norminette*" "*Messages*"))
 	(pop-to-buffer "*Norminette*")))
 
 (global-set-key (kbd "C-x C-n")
-				'norminette) ; Default binding
+                'norminette) ; Default binding
 
 (provide '42devkit)
 
