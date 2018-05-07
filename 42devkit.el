@@ -26,22 +26,53 @@
 
 ;;; Commentary:
 
-;; 42devkit: ;; todo write description
+;; 42devkit: Utils for 42born2code (42.fr) students
 
 ;; Some features explained
+;;    norminette:
+;;      Norminette is a static source code
+;;      analyser to check the norm/coding style
+;;      of C/C++ files and headers.
+;;      The `norminette` function is a convenient
+;;      wrapper for the local binary (/usr/bin/norminette)
 
 ;;; Code:
+
+;; Norminette:
+
+(defvar norminette-always-prompt nil
+  "If the variable is set to true,
+   the function will ask to user
+   which folder the binary should analyse.
+   The default folder where the buffer
+   is open.")
+
+(defvar norminette-default-args ""
+  "The binary doesn't take options by default,
+   but it's possible to specify your own arguments
+   by setting up the variable in your scope.")
 
 (defun norminette ()
   "Prompt in a first time user input for project path
    if the local variable `42project` is not set.
-   Then create a buffer with the norminette output"
+   Then create a buffer with the norminette output.
+   This is a convenient wrapper of the 42's norminette
+   binary file on workstations."
   (interactive)
-  (if (boundp '42project)
-	  (progn
-		(message "%s" "Project variable set."))
-	(progn
-	  (message "%s" "Project variable not set."))))
+  (let* ((binary "/usr/bin/norminette")
+		 (inhibit-read-only nil)
+		 (dir (file-name-directory buffer-file-name))
+		 (greper "| grep -B1 \"^Error\""))
+	(with-output-to-temp-buffer "*Norminette*"
+	  (when (eq norminette-always-prompt t)
+		(setq dir (read-file-name "Directory to scan: ")))
+	  (shell-command (format "%s %s %s %s" binary
+							 norminette-default-args dir
+							 greper) "*Norminette*" "*Messages*"))
+	(pop-to-buffer "*Norminette*")))
+
+(global-set-key (kbd "C-x C-n")
+				'norminette) ; Default binding
 
 (provide '42devkit)
 
