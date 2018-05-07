@@ -7,7 +7,7 @@
 ;; URL: https://github.com/42og/42devkit
 ;; Created: January 2018
 ;; Keywords: tools, 42, 42devkit
-;; Version:
+;; Version: 0.1.0
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -31,6 +31,17 @@
 ;; Some features explained
 
 ;;; Code:
+
+(defun norminette ()
+  "Prompt in a first time user input for project path
+   if the local variable `42project` is not set.
+   Then create a buffer with the norminette output"
+  (interactive)
+  (if (boundp '42project)
+	  (progn
+		(message "%s" "Project variable set."))
+	(progn
+	  (message "%s" "Project variable not set."))))
 
 (provide '42devkit)
 
