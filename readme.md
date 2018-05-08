@@ -5,3 +5,14 @@
   width="80" height="80" align="right"></a>
   
   > Development mode/toolkit for 42 school
+**Installation**
+#### Clone the repo
+```bash
+git clone https://github.com/42og/42devkit ~/.emacs.d
+```
+#### Load file in your config
+```elisp
+;; Add 42devkit
+(load "~/.emacs.d/42devkit/42devkit")
+(require '42devkit)
+```
