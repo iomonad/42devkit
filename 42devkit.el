@@ -76,9 +76,11 @@
    instead of directory"
   t)
 
-(global-set-key (kbd "C-x C-n")
+(global-unset-key (kbd "M-n"))
+(global-set-key (kbd "M-n")
                 'norminette) ; Default binding
-(global-set-key (kbd "C-x C-n f")
+(global-unset-key (kbd "C-x M-n"))
+(global-set-key (kbd "C-x M-n")
                 'norminette-file-buffer) ; Default file binding
 
 (provide '42devkit)
