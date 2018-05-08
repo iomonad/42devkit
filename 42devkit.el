@@ -71,8 +71,15 @@
 							 greper) "*Norminette*" "*Messages*"))
 	(pop-to-buffer "*Norminette*")))
 
+(defun norminette-file-buffer ()
+  "Apply the norminette on the current buffer
+   instead of directory"
+  t)
+
 (global-set-key (kbd "C-x C-n")
                 'norminette) ; Default binding
+(global-set-key (kbd "C-x C-n f")
+                'norminette-file-buffer) ; Default file binding
 
 (provide '42devkit)
 
