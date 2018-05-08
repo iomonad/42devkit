@@ -7,7 +7,7 @@
 ;; URL: https://github.com/42og/42devkit
 ;; Created: January 2018
 ;; Keywords: tools, 42, 42devkit
-;; Version: 0.1.0
+;; Version: 0.1.1
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
