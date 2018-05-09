@@ -23,7 +23,7 @@ git clone https://github.com/42og/42devkit ~/.emacs.d
 * Automatic best practices on `c-hook`
 
 ## Norminette
-> The `norminette` is a static code analyser to check norm.
+> `Norminette` is a static code analyser to check **C/C++** source norm.
 ### Bindings
 * `M-n` analyze the current buffer folder
 * `C-x M-n` analyze the buffer *only*
