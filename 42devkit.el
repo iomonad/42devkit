@@ -131,10 +131,9 @@
    By default, the function is not associated to the c hook
    but can be added using `normify-hooks t`."
   (interactive)
-  (let ((regexy "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+")
-        (lists (matchs-to-seq "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+"
-                              (buffer-string))))
-    (error lists)))
+  (let ((regexy "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+") ;TODO: Add f regex
+        (lists (matchs-to-seq regexy (buffer-string))))
+    (message lists)))
 
 (global-unset-key (kbd "M-n"))
 (global-set-key (kbd "M-n")
