@@ -4,7 +4,7 @@
 
 ;; Author: Clement T. <clement@trosa.io>
 ;; Maintainer: Clement T. <clement@trosa.io>
-;; URL: https://github.com/42og/42devkit
+;; URL: https://github.com/iomonad/42devkit
 ;; Created: January 2018
 ;; Keywords: tools, 42, 42devkit
 ;; Version: 0.1.1
@@ -112,6 +112,30 @@
                 'norminette-file-buffer) ; Default file binding
 
 ;; Norminette ends here
+
+;; Normify start here
+
+(defun matchs-to-seq (regexp string)
+  "Store all the regexp macthes tod
+   a list."
+  (save-match-data
+    (let ((pos 0)
+          matches)
+      (while (string-match regexp string pos)
+        (push (match-string 0 string) matches)
+        (setq pos (match-end 0)))
+      matches)))
+
+(defun normify ()
+  "Put the current C buffer to the 42born2code norme rules.
+   By default, the function is not associated to the c hook
+   but can be added using `normify-hooks t`."
+  (interactive)
+  (let ((regex "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+")
+        (lists (matchs-to-seq regex (buffer-string))))
+    (error lists)))
+
+;; Normify ends here
 
 (provide '42devkit)
 

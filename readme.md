@@ -1,4 +1,4 @@
-##  42devkit.el [![HitCount](http://hits.dwyl.io/42og/42devkit.svg)](http://hits.dwyl.io/42og/42devkit)
+##  42devkit.el [![HitCount](http://hits.dwyl.io/iomonad/42devkit.svg)](http://hits.dwyl.io/iomonad/42devkit)
 
 <a href="https://github.com/iomonad/iomonad.el"><img
   src="https://www.gnu.org/software/emacs/images/emacs.png" alt="Normalize Logo"
@@ -9,7 +9,7 @@
 **Installation**
 #### Clone the repo
 ```bash
-git clone https://github.com/42og/42devkit ~/.emacs.d
+git clone https://github.com/iomonad/42devkit ~/.emacs.d
 ```
 #### Load file in your config
 ```elisp
