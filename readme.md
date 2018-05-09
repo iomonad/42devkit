@@ -3,7 +3,7 @@
 <a href="https://github.com/iomonad/iomonad.el"><img
   src="https://www.gnu.org/software/emacs/images/emacs.png" alt="Normalize Logo"
   width="80" height="80" align="right"></a>
-  
+
   > Development mode/toolkit for 42 school
 
 **Installation**
@@ -21,3 +21,9 @@ git clone https://github.com/42og/42devkit ~/.emacs.d
 * Fully configurable `norminette` wrapper.
 * 'Normify' current buffer (wip)
 * Automatic best practices on `c-hook`
+
+## Norminette
+> The `norminette` is a static code analyser to check norm.
+### Bindings
+* `M-n` analyze the current buffer folder
+* `C-x M-n` analyze the buffer *only*
