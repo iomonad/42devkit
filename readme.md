@@ -25,5 +25,5 @@ git clone https://github.com/iomonad/42devkit ~/.emacs.d
 ## Norminette
 > `Norminette` is a static code analyser to check **C/C++** source norm.
 ### Bindings
-* `M-n` analyze the current buffer folder
-* `C-x M-n` analyze the buffer *only*
+* `C-x n` analyze the current buffer folder
+* `C-x C-n` analyze the buffer *only*

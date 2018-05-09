@@ -104,11 +104,11 @@
           t)
       (pop-to-buffer "*Norminette File*")))))
 
-(global-unset-key (kbd "M-n"))
-(global-set-key (kbd "M-n")
+(global-unset-key (kbd "C-x n"))
+(global-set-key (kbd "C-x n")
                 'norminette) ; Default binding
-(global-unset-key (kbd "C-x M-n"))
-(global-set-key (kbd "C-x M-n")
+(global-unset-key (kbd "C-x C-n"))
+(global-set-key (kbd "C-x C-n")
                 'norminette-file-buffer) ; Default file binding
 
 ;; Norminette ends here
@@ -131,9 +131,14 @@
    By default, the function is not associated to the c hook
    but can be added using `normify-hooks t`."
   (interactive)
-  (let ((regex "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+")
-        (lists (matchs-to-seq regex (buffer-string))))
+  (let ((regexy "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+")
+        (lists (matchs-to-seq "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+"
+                              (buffer-string))))
     (error lists)))
+
+(global-unset-key (kbd "M-n"))
+(global-set-key (kbd "M-n")
+                'normify)
 
 ;; Normify ends here
 
