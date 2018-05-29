@@ -35,6 +35,10 @@
 ;;      of C/C++ files and headers.
 ;;      The `norminette` function is a convenient
 ;;      wrapper for the local binary (/usr/bin/norminette)
+;;    hp-mode:
+;;      Hp-mode provide a simple modo to highlight commons
+;;      development words in codebases like TODO, FIXEME (...)
+;;      By default, the mode is added to ‘prog-mode-hook’
 
 ;;; Code:
 
@@ -131,16 +135,37 @@
    By default, the function is not associated to the c hook
    but can be added using `normify-hooks t`."
   (interactive)
-  (let ((regexy "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+")
-        (lists (matchs-to-seq "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+"
-                              (buffer-string))))
-    (error lists)))
+  (let ((regexy "^[A-z|(*static|*inline)]+[ \t]+[A-z|_]+") ;TODO: Add f regex
+        (lists (matchs-to-seq regexy (buffer-string))))
+    (message lists)))
 
 (global-unset-key (kbd "M-n"))
 (global-set-key (kbd "M-n")
                 'normify)
 
 ;; Normify ends here
+
+;; hp-mode start here
+
+(defvar hp-mode--default-matchs
+  "\\<\\(FIXME\\|WRITEME\\|WRITEME!\\|TODO\\|BUG\\):?"
+  "Regex of the default occurence match.")
+
+(defvar hp-mode--default-color 'hi-yellow
+  "Set default highlight color")
+
+(defvar hp-mode--enabled t
+  "By default, mode is enabled")
+
+(defun hp-mode ()
+    "Simple mode to highlight some programming patterns."
+  (highlight-regexp hp-mode--default-matchs
+                    hp-mode--default-color))
+
+(when (eq hp-mode--enabled t)           ; Apply to boot
+  (add-hook 'prog-mode-hook 'hp-mode))
+
+;; hp-mode ends here
 
 (provide '42devkit)
 
