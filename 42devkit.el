@@ -35,6 +35,10 @@
 ;;      of C/C++ files and headers.
 ;;      The `norminette` function is a convenient
 ;;      wrapper for the local binary (/usr/bin/norminette)
+;;    hp-mode:
+;;      Hp-mode provide a simple modo to highlight commons
+;;      development words in codebases like TODO, FIXEME (...)
+;;      By default, the mode is added to ‘prog-mode-hook’
 
 ;;; Code:
 
@@ -140,6 +144,28 @@
                 'normify)
 
 ;; Normify ends here
+
+;; hp-mode start here
+
+(defvar hp-mode--default-matchs
+  "\\<\\(FIXME\\|WRITEME\\|WRITEME!\\|TODO\\|BUG\\):?"
+  "Regex of the default occurence match.")
+
+(defvar hp-mode--default-color 'hi-yellow
+  "Set default highlight color")
+
+(defvar hp-mode--enabled t
+  "By default, mode is enabled")
+
+(defun hp-mode ()
+    "Simple mode to highlight some programming patterns."
+  (highlight-regexp hp-mode--default-matchs
+                    hp-mode--default-color))
+
+(when (eq hp-mode--enabled t)           ; Apply to boot
+  (add-hook 'prog-mode-hook 'hp-mode))
+
+;; hp-mode ends here
 
 (provide '42devkit)
 
